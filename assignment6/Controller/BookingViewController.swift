@@ -25,7 +25,7 @@ class BookingViewController: UIViewController {
     var customer: Results<Customer>!
     var room: Results<Room>!
     
-    lazy let realm = try! Realm()
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()

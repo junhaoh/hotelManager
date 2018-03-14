@@ -19,7 +19,7 @@ class RoomViewController: UIViewController {
     var strType: String = ""
     var strOccupancy: String = ""
     
-    lazy let realm = try! Realm()
+    let realm = try! Realm()
     var room: Results<Room>?
     
     override func viewDidLoad() {
@@ -65,7 +65,7 @@ class RoomViewController: UIViewController {
         newRoom.name = name.text!
         newRoom.type = strType
         newRoom.price = price.text!
-        newRoom.occupancy = strType
+        newRoom.occupancy = strOccupancy
         
         do {
             try realm.write {

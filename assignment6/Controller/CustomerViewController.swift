@@ -16,7 +16,7 @@ class CustomerViewController: UIViewController {
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var address: UITextField!
     
-    lazy let realm = try! Realm()
+    let realm = try! Realm()
     var customer: Results<Customer>?
     
     override func viewDidLoad() {

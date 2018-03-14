@@ -21,7 +21,7 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
     var booking: Results<Booking>!
     var customer: Results<Customer>!
     var room: Results<Room>!
-    lazy let realm = try! Realm()
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
         displayTableView.dataSource = self
         search.delegate = self
 
-        load()
+        loadObjects()
 
         displayTableView.register(UINib(nibName: "DisplayCell", bundle: nil), forCellReuseIdentifier: "customDisplayCell")
 
@@ -50,35 +50,37 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return customer.count
+            return customer?.count ?? 1
         } else if section == 1 {
-            return room.count
+            return room?.count ?? 1
         } else {
-            return booking.count
+            return booking?.count ?? 1
         }
     }
 
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "customDisplayCell", for: indexPath) as! DisplayCell
-//
-//        if indexPath.section == 0 {
-//            cell.customTextView.text = "    \(customer[indexPath.row].name) - " +
-//            "\(customer[indexPath.row].id) - " + "\(customer[indexPath.row].phone) - " +
-//            "\(customer[indexPath.row].address)"
-//        } else if indexPath.section == 1 {
-//            cell.customTextView.text = "    \(room[indexPath.row].name) - " +
-//            "\(room[indexPath.row].type) - " + "\(room[indexPath.row].price) - " +
-//            "\(room[indexPath.row].occupancy)"
-//        } else {
-//            cell.customTextView.text = "    \(booking[indexPath.row].bookingName) - " +
-//            "\(booking[indexPath.row].checkin) - " + "\(booking[indexPath.row].checkout) - " +
-//            "\(booking[indexPath.row].customers.name) - " + "\(booking[indexPath.row].customers.id) - " +
-//            "\(booking[indexPath.row].customers.phone) - " + "\(booking[indexPath.row].customers.address) - " +
-//            "\(booking[indexPath.row].rooms.name) - " + "\(booking[indexPath.row].rooms.type) - " +
-//            "\(booking[indexPath.row].rooms.price) - " + "\(booking[indexPath.row].rooms.occupancy)"
-//        }
-//        return cell
-//    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customDisplayCell", for: indexPath) as! DisplayCell
+        
+        let row = indexPath.row
+
+        if indexPath.section == 0 {
+            cell.customTextView.text = "    \(customer[row].name) - " +
+            "\(customer[row].id) - " + "\(customer[row].phone) - " +
+            "\(customer[row].address)"
+        } else if indexPath.section == 1 {
+            cell.customTextView.text = "    \(room[row].name) - " +
+            "\(room[row].type) - " + "\(room[row].price) - " +
+            "\(room[row].occupancy)"
+        } else {
+            cell.customTextView.text = "    \(booking[row].bookingName) - " +
+            "\(booking[row].checkin) - " + "\(booking[row].checkout) - " +
+            "\(booking[row].customers[row].name) - " + "\(booking[row].customers[row].id) - " +
+            "\(booking[row].customers[row].phone) - " + "\(booking[row].customers[row].address) - " +
+            "\(booking[row].rooms[row].name) - " + "\(booking[row].rooms[row].type) - " +
+            "\(booking[row].rooms[row].price) - " + "\(booking[row].rooms[row].occupancy)"
+        }
+        return cell
+    }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
@@ -91,49 +93,60 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 35
     }
 
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            if indexPath.section == 0 {
-//
-//                customer.remove(at: indexPath.row)
-//                tableView.deleteRows(at: [indexPath], with: .fade)
-//            } else if indexPath.section == 1 {
-//
-//                room.remove(at: indexPath.row)
-//                tableView.deleteRows(at: [indexPath], with: .fade)
-//            } else {
-//                booking.remove(at: indexPath.row)
-//
-//                tableView.deleteRows(at: [indexPath], with: .fade)
-//            }
-//        }
-//    }
-
-    func deleteItem(at indexPath: IndexPath, resutls: Results) {
-        if let item = results[indexPath.row] {
-
-            do {
-                try realm.write {
-                    realm.delete(item)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if indexPath.section == 0 {
+                try! realm.write {
+                    realm.delete(customer[indexPath.row])
                 }
-            } catch {
-                print("Error deleting item, \(error)")
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                
+            } else if indexPath.section == 1 {
+                try! realm.write {
+                    realm.delete(room[indexPath.row])
+                }
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                try! realm.write {
+                    realm.delete(booking[indexPath.row])
+                }
+
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
     }
     
-    func load() {
+    func loadObjects() {
         customer = realm.objects(Customer.self)
         room = realm.objects(Room.self)
         booking = realm.objects(Booking.self)
+        
+        displayTableView.reloadData()
     }
 
 }
 
 extension DisplayViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        customer = customer.filter("name CONTAINS[cd] %@", search.text!)
+        room = room.filter("name CONTAINS[cd] %@", search.text!)
+        booking = booking.filter("bookingName CONTAINS[cd] %@", search.text!)
 
+        displayTableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if search.text?.count == 0 {
+            loadObjects()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
         }
 
     }
+}
 
