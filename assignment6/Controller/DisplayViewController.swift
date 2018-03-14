@@ -73,11 +73,8 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
             "\(room[row].occupancy)"
         } else {
             cell.customTextView.text = "    \(booking[row].bookingName) - " +
-            "\(booking[row].checkin) - " + "\(booking[row].checkout) - " +
-            "\(booking[row].customers[row].name) - " + "\(booking[row].customers[row].id) - " +
-            "\(booking[row].customers[row].phone) - " + "\(booking[row].customers[row].address) - " +
-            "\(booking[row].rooms[row].name) - " + "\(booking[row].rooms[row].type) - " +
-            "\(booking[row].rooms[row].price) - " + "\(booking[row].rooms[row].occupancy)"
+            "\(booking[row].checkin) - " + "\(booking[row].checkout) \n" +
+                "   \(booking[row].customers.last!) - " + "    \(booking[row].rooms.last!)"
         }
         return cell
     }
