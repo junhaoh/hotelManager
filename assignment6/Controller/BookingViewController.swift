@@ -91,7 +91,6 @@ class BookingViewController: UIViewController {
         }
     }
    
-    
     func create(booking: Booking) {
         do {
             try realm.write {
