@@ -107,7 +107,4 @@ class BookingViewController: UIViewController {
         room = realm.objects(Room.self)
         booking = realm.objects(Booking.self)
     }
-    
-    
-
 }
