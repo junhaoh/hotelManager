@@ -95,7 +95,7 @@ class BookingViewController: UIViewController {
     func create(booking: Booking) {
         do {
             try realm.write {
-                realm.add(booking)
+                realm.add(booking, update: true)
             }
         } catch {
             print("Error creating new booking, \(error)")

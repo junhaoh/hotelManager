@@ -17,10 +17,11 @@ class CustomerViewController: UIViewController {
     @IBOutlet weak var address: UITextField!
     
     let realm = try! Realm()
-    var customer: Results<Customer>?
+    var customer: Results<Customer>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        customer = realm.objects(Customer.self)
     }
         
     @IBAction func save(_ sender: Any) {
@@ -41,8 +42,8 @@ class CustomerViewController: UIViewController {
             let confirm = UIAlertController(title: "Confirmation", message: "You created a new customer!", preferredStyle: .alert)
             confirm.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(confirm, animated: true, completion: nil)
-            
             create()
+            
         }
     }
     
@@ -55,7 +56,7 @@ class CustomerViewController: UIViewController {
         
         do {
             try realm.write {
-                realm.add(newCustomer)
+                realm.add(newCustomer, update: true)
             }
         } catch {
             print("Error creating new customer, \(error)")

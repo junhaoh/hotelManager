@@ -17,4 +17,8 @@ class Room: Object {
     
     var parent = LinkingObjects(fromType: Booking.self, property: "rooms")
     
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+    
 }

@@ -16,4 +16,9 @@ class Customer: Object {
     @objc dynamic var address: String = ""
     
     var parent = LinkingObjects(fromType: Booking.self, property: "customers")
+    
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+    
 }

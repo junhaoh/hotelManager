@@ -24,6 +24,7 @@ class RoomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        room = realm.objects(Room.self)
     }
     
     @IBAction func typeChanged(_ sender: Any) {
@@ -69,7 +70,7 @@ class RoomViewController: UIViewController {
         
         do {
             try realm.write {
-                realm.add(newRoom)
+                realm.add(newRoom, update: true)
             }
         } catch {
             print("Error creating new room, \(error)")

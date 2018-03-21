@@ -16,4 +16,8 @@ class Booking: Object {
     
     let customers = List<Customer>()
     let rooms = List<Room>()
+    
+    override static func primaryKey() -> String? {
+        return "bookingName"
+    }
 }

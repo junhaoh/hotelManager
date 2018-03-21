@@ -27,10 +27,6 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "goToBooking", sender: self)
     }
     
-    @IBAction func addSearch(_ sender: Any) {
-        performSegue(withIdentifier: "goToSearch", sender: self)
-    }
-    
     @IBAction func addDisplay(_ sender: Any) {
         performSegue(withIdentifier: "goToDisplay", sender: self)
     }
