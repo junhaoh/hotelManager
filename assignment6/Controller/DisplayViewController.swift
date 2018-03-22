@@ -115,6 +115,31 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! DetailViewController
+        
+        if let indexPath = displayTableView.indexPathForSelectedRow {
+            let row = indexPath.row
+            
+            if indexPath.section == 0 {
+                destinationVC.selectedCustomer = customer[row]
+                destinationVC.row = row
+            } else if indexPath.section == 1 {
+                destinationVC.selectedRoom = room[row]
+                destinationVC.row = row
+            } else {
+                destinationVC.selectedBooking = booking[row]
+                destinationVC.row = row
+            }
+        }
+    }
+        
+    
     func loadObjects() {
         customer = realm.objects(Customer.self)
         room = realm.objects(Room.self)

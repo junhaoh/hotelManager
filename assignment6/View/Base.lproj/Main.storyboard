@@ -211,7 +211,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSz-3M-oaW" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1181.1594202898552" y="-617.11956521739137"/>
+            <point key="canvasLocation" x="-1065" y="-630"/>
         </scene>
         <!--Booking-->
         <scene sceneID="XLx-cH-9sE">
@@ -342,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Frg-dy-VSb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1055.072463768116" y="110.86956521739131"/>
+            <point key="canvasLocation" x="-1141" y="105"/>
         </scene>
         <!--Display View Controller-->
         <scene sceneID="Kdl-R1-zsb">
@@ -385,11 +385,45 @@
                     <connections>
                         <outlet property="displayTableView" destination="VfN-oi-Nub" id="WZV-tC-dyg"/>
                         <outlet property="search" destination="g9c-5F-Wyo" id="alc-hw-4Bm"/>
+                        <segue destination="ocw-Hg-lDh" kind="show" identifier="goToDetail" id="p3E-EC-e09"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KWh-pK-IFI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1217.3913043478262" y="934.23913043478274"/>
+            <point key="canvasLocation" x="-1987" y="1031"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="mdD-n2-9p7">
+            <objects>
+                <viewController title="Detail" id="ocw-Hg-lDh" customClass="DetailViewController" customModule="assignment6" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aRq-wW-djf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EaO-pc-8b8">
+                                <rect key="frame" x="0.0" y="347" width="414" height="389"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wj3-BU-kGl">
+                                <rect key="frame" x="0.0" y="64" width="414" height="275"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="am4-di-LO9"/>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="EaO-pc-8b8" id="lo3-2s-Heh"/>
+                        <outlet property="textView" destination="wj3-BU-kGl" id="4XR-Ix-jEF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ail-zQ-gw5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1065.217391304348" y="1029.6195652173915"/>
         </scene>
         <!--Customer-->
         <scene sceneID="UAR-dO-NPh">
@@ -483,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ENN-t1-9rD" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2015.2" y="-564.46776611694156"/>
+            <point key="canvasLocation" x="-2051" y="-664"/>
         </scene>
     </scenes>
 </document>
