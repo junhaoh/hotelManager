@@ -17,6 +17,12 @@ class RoomViewController: UIViewController {
     @IBOutlet weak var type: UISegmentedControl!
     @IBOutlet weak var occupancy: UISegmentedControl!
     
+    @IBOutlet weak var image: UIImageView!
+    
+    var imageReference: StorageReference {
+        return Storage.storage().reference().child("images")
+    }
+    
     var strType: String = ""
     var strOccupancy: String = ""
     
@@ -75,6 +81,13 @@ class RoomViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func uploadImage(_ sender: UIButton) {
+        let uploadImage = UIImagePickerController()
+        uploadImage.delegate = self
+        uploadImage.allowsEditing = false
+        uploadImage.sourceType = .photoLibrary
+        self.present(uploadImage, animated: true, completion: nil)
+    }
     
     func create() {
         let newRoom = Room()
@@ -94,12 +107,32 @@ class RoomViewController: UIViewController {
     
 }
 
-extension RoomViewController: UIImagePickerControllerDelegate {
+extension RoomViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image_data = info[UIImagePickerControllerOriginalImage] as? UIImage
-        let imageData:Data = UIImagePNGRepresentation(image_data)!
+        if let imageData = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            image.image = imageData
+        } else {
+            print("No image upload!")
+        }
+        
+        guard let imageJPEG = UIImageJPEGRepresentation(image.image!, 1) else { return }
+        
+        let uploadImageRef = imageReference.child("image.image!")
+        
+        let uploadTask = uploadImageRef.putData(imageJPEG, metadata: nil) { (metadata, error) in
+            print("UPLOAD TASK FINISHED")
+            print(metadata ?? "NO METADATA")
+            print(error ?? "NO ERROR")
+        }
+        
+        uploadTask.observe(.progress) { (snapshot) in
+            print(snapshot.progress ?? "NO MORE PROGRESS")
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
 }
 
 

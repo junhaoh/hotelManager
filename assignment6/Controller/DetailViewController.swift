@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
             "ID: \(customer[row].id) \n\n" + "Address: \(customer[row].address) \n\n" +
             "Phone: \(customer[row].phone) \n\n"
             
-            image.image = UIImage(named: "customer.png")
+            image.image = UIImage(named: "customer.jpg")
             
         } else if selectedRoom != nil {
             textView.text = "\n\n Name: \(room[row].name) \n\n" +
