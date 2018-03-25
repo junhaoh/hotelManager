@@ -114,7 +114,7 @@
         <!--Room-->
         <scene sceneID="c5m-Qm-uxM">
             <objects>
-                <viewController id="Mcb-2B-mZ4" customClass="RoomViewController" customModule="assignment6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="roomStoryboard" id="Mcb-2B-mZ4" customClass="RoomViewController" customModule="assignment6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dnc-wD-lPZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="0ax-JD-Gdj"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Room" id="9QJ-Nm-uoP"/>
+                    <navigationItem key="navigationItem" title="Room" id="9QJ-Nm-uoP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Elk-dn-3YF">
+                            <connections>
+                                <action selector="addButton:" destination="Mcb-2B-mZ4" id="gYe-Mf-KC9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="name" destination="C9K-1I-2co" id="352-3q-cTq"/>
                         <outlet property="occupancy" destination="QOd-eI-ETW" id="uee-3C-sRT"/>
@@ -216,7 +222,7 @@
         <!--Booking-->
         <scene sceneID="XLx-cH-9sE">
             <objects>
-                <viewController id="Qei-Ow-FVX" customClass="BookingViewController" customModule="assignment6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="bookingStoryboard" id="Qei-Ow-FVX" customClass="BookingViewController" customModule="assignment6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ms-Xx-Bww">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,7 +335,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="FR0-Xy-SYe"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Booking" id="U2L-lD-3KI"/>
+                    <navigationItem key="navigationItem" title="Booking" id="U2L-lD-3KI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ndq-bk-RPb">
+                            <connections>
+                                <action selector="addButton:" destination="Qei-Ow-FVX" id="jh5-vo-PPW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bookingName" destination="M8B-O2-u3I" id="zeW-ND-V3Y"/>
                         <outlet property="checkin" destination="FiH-7T-mWl" id="jbq-zx-hxC"/>
@@ -428,7 +440,7 @@
         <!--Customer-->
         <scene sceneID="UAR-dO-NPh">
             <objects>
-                <viewController id="Llx-qn-jv7" customClass="CustomerViewController" customModule="assignment6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="customerStoryboard" id="Llx-qn-jv7" customClass="CustomerViewController" customModule="assignment6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vF9-Wv-sYn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -507,7 +519,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="0jT-ed-DeM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Customer" id="nul-Zh-cum"/>
+                    <navigationItem key="navigationItem" title="Customer" id="nul-Zh-cum">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="jT6-EI-0WD">
+                            <connections>
+                                <action selector="addButton:" destination="Llx-qn-jv7" id="ryQ-7h-6fQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="address" destination="se8-F2-yv5" id="L94-oE-tPS"/>
                         <outlet property="id" destination="XcX-0W-9kH" id="dBN-Z1-1Gc"/>

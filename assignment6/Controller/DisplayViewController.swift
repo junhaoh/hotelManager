@@ -36,8 +36,6 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         displayTableView.estimatedRowHeight = 55
         displayTableView.rowHeight = UITableViewAutomaticDimension
-
-
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -147,7 +145,6 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         displayTableView.reloadData()
     }
-
 }
 
 extension DisplayViewController: UISearchBarDelegate {

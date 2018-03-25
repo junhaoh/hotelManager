@@ -25,6 +25,7 @@
 		F842BA23206327F800C1E728 /* customer.png in Resources */ = {isa = PBXBuildFile; fileRef = F842BA22206327F800C1E728 /* customer.png */; };
 		F842BA252063281300C1E728 /* double.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F842BA242063281300C1E728 /* double.jpg */; };
 		F842BA272063281F00C1E728 /* single.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F842BA262063281F00C1E728 /* single.jpg */; };
+		F842BA292066E4C800C1E728 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F842BA282066E4C800C1E728 /* GoogleService-Info.plist */; };
 		F84C3D2720573A1A00446198 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84C3D2620573A1A00446198 /* Customer.swift */; };
 		F84C3D2920573A2300446198 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84C3D2820573A2300446198 /* Room.swift */; };
 		F84C3D2B20573A2D00446198 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84C3D2A20573A2D00446198 /* Booking.swift */; };
@@ -53,6 +54,7 @@
 		F842BA22206327F800C1E728 /* customer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customer.png; sourceTree = "<group>"; };
 		F842BA242063281300C1E728 /* double.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = double.jpg; sourceTree = "<group>"; };
 		F842BA262063281F00C1E728 /* single.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = single.jpg; sourceTree = "<group>"; };
+		F842BA282066E4C800C1E728 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F84C3D2620573A1A00446198 /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		F84C3D2820573A2300446198 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		F84C3D2A20573A2D00446198 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				F83B78192047573E00C99E3F /* Controller */,
 				F842B9F52058D2DA00C1E728 /* Supporting Files */,
 				F83B78122047571D00C99E3F /* Info.plist */,
+				F842BA282066E4C800C1E728 /* GoogleService-Info.plist */,
 			);
 			path = assignment6;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				F842BA252063281300C1E728 /* double.jpg in Resources */,
 				F842B9F72058D33900C1E728 /* Default-568h@2x.png in Resources */,
 				F83B780C2047571D00C99E3F /* Main.storyboard in Resources */,
+				F842BA292066E4C800C1E728 /* GoogleService-Info.plist in Resources */,
 				F842BA1D206301DB00C1E728 /* default.realm in Resources */,
 				F842BA272063281F00C1E728 /* single.jpg in Resources */,
 			);
@@ -275,13 +279,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-assignment6/Pods-assignment6-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

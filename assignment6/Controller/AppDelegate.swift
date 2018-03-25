@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        FirebaseApp.configure()
         
         let bundlePath = Bundle.main.path(forResource: "default", ofType: "realm")
         let destPath = Realm.Configuration.defaultConfiguration.fileURL?.path

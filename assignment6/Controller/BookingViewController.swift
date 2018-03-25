@@ -90,6 +90,20 @@ class BookingViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Create", message: "Do you want to create new booking?", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Yes", style: .default) { (action) in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let newView = storyBoard.instantiateViewController(withIdentifier: "bookingStoryboard")
+            self.navigationController?.pushViewController(newView, animated: true)
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
    
     func create(booking: Booking) {
         do {

@@ -19,10 +19,13 @@ class CustomerViewController: UIViewController {
     let realm = try! Realm()
     var customer: Results<Customer>!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
         customer = realm.objects(Customer.self)
     }
+    
         
     @IBAction func save(_ sender: Any) {
         
@@ -47,6 +50,20 @@ class CustomerViewController: UIViewController {
         }
     }
     
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Create", message: "Do you want to create new customer?", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Yes", style: .default) { (action) in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let newView = storyBoard.instantiateViewController(withIdentifier: "customerStoryboard")
+            self.navigationController?.pushViewController(newView, animated: true)
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+
+    }
+
     func create() {
         let newCustomer = Customer()
         newCustomer.name = name.text!

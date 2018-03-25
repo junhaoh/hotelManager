@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 class RoomViewController: UIViewController {
     
@@ -61,6 +62,20 @@ class RoomViewController: UIViewController {
         }
     }
     
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Create", message: "Do you want to create new room?", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Yes", style: .default) { (action) in
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let newView = storyBoard.instantiateViewController(withIdentifier: "roomStoryboard")
+            self.navigationController?.pushViewController(newView, animated: true)
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     func create() {
         let newRoom = Room()
         newRoom.name = name.text!
@@ -77,6 +92,23 @@ class RoomViewController: UIViewController {
         }
     }
     
-    
-    
 }
+
+extension RoomViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image_data = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let imageData:Data = UIImagePNGRepresentation(image_data)!
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
