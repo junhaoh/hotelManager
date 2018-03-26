@@ -18,6 +18,8 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var displayTableView: UITableView!
     @IBOutlet weak var search: UISearchBar!
 
+    var imagePassed: UIImage!
+    
     var booking: Results<Booking>!
     var customer: Results<Customer>!
     var room: Results<Room>!
@@ -57,24 +59,36 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customDisplayCell", for: indexPath) as! DisplayCell
+        let customerCell = tableView.dequeueReusableCell(withIdentifier: "customDisplayCell", for: indexPath) as! DisplayCell
+        
+        let basicCell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath) as! BasicTableViewCell
         
         let row = indexPath.row
 
         if indexPath.section == 0 {
-            cell.customTextView.text = "    \(customer[row].name) - " +
+            customerCell.customTextView.text = "    \(customer[row].name) - " +
             "\(customer[row].id) - " + "\(customer[row].phone) - " +
             "\(customer[row].address)"
+            
+            return customerCell
+            
         } else if indexPath.section == 1 {
-            cell.customTextView.text = "    \(room[row].name) - " +
+            basicCell.basicLabel.text = "    \(room[row].name) - " +
             "\(room[row].type) - " + "\(room[row].price) - " +
             "\(room[row].occupancy)"
+            
+            basicCell.basicImage.image = imagePassed
+            
+            return basicCell
+            
         } else {
-            cell.customTextView.text = "    \(booking[row].bookingName) - " +
+            customerCell.customTextView.text = "    \(booking[row].bookingName) - " +
             "\(booking[row].checkin) - " + "\(booking[row].checkout) \n" +
                 "   \(booking[row].customers.last!) - " + "    \(booking[row].rooms.last!)"
+            
+            return customerCell
         }
-        return cell
+        
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -112,7 +126,6 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToDetail", sender: self)

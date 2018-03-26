@@ -117,10 +117,15 @@ extension RoomViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         guard let imageJPEG = UIImageJPEGRepresentation(image.image!, 1) else { return }
         
-        let uploadImageRef = imageReference.child("image.image!")
+        let uploadImageRef = imageReference.child("\(image.image!)")
         
         let uploadTask = uploadImageRef.putData(imageJPEG, metadata: nil) { (metadata, error) in
             print("UPLOAD TASK FINISHED")
+            
+            let confirm = UIAlertController(title: "Confirmation", message: "You successfully uploaded a photo!", preferredStyle: .alert)
+            confirm.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(confirm, animated: true, completion: nil)
+            
             print(metadata ?? "NO METADATA")
             print(error ?? "NO ERROR")
         }
@@ -132,6 +137,10 @@ extension RoomViewController: UIImagePickerControllerDelegate, UINavigationContr
         self.dismiss(animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! DisplayViewController
+        destinationVC.imagePassed = UIImage(named: "single.jpg")
+    }
     
 }
 

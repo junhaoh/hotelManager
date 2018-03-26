@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE2FE79C13DA58A105A10AA2 /* Pods_assignment6.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAFC57C0367A5367CFF27B6 /* Pods_assignment6.framework */; };
 		F8047EF6206751D2005DCBD2 /* customer.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F8047EF5206751D2005DCBD2 /* customer.jpg */; };
+		F8047EF82067844F005DCBD2 /* BasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8047EF72067844F005DCBD2 /* BasicTableViewCell.swift */; };
 		F83B78072047571D00C99E3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B78062047571D00C99E3F /* AppDelegate.swift */; };
 		F83B78092047571D00C99E3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B78082047571D00C99E3F /* ViewController.swift */; };
 		F83B780C2047571D00C99E3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F83B780A2047571D00C99E3F /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		2CAFC57C0367A5367CFF27B6 /* Pods_assignment6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_assignment6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6919F914459FE81B8D846569 /* Pods-assignment6.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-assignment6.debug.xcconfig"; path = "Pods/Target Support Files/Pods-assignment6/Pods-assignment6.debug.xcconfig"; sourceTree = "<group>"; };
 		F8047EF5206751D2005DCBD2 /* customer.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = customer.jpg; sourceTree = "<group>"; };
+		F8047EF72067844F005DCBD2 /* BasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableViewCell.swift; sourceTree = "<group>"; };
 		F83B78032047571D00C99E3F /* assignment6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = assignment6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83B78062047571D00C99E3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F83B78082047571D00C99E3F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			children = (
 				F83B782A2048E44F00C99E3F /* DisplayCell.swift */,
 				F83B782B2048E44F00C99E3F /* DisplayCell.xib */,
+				F8047EF72067844F005DCBD2 /* BasicTableViewCell.swift */,
 			);
 			path = "Custom Cell";
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				F83B78072047571D00C99E3F /* AppDelegate.swift in Sources */,
 				F84C3D2920573A2300446198 /* Room.swift in Sources */,
 				F83B782C2048E44F00C99E3F /* DisplayCell.swift in Sources */,
+				F8047EF82067844F005DCBD2 /* BasicTableViewCell.swift in Sources */,
 				F83B78202047581F00C99E3F /* BookingViewController.swift in Sources */,
 				F84C3D2720573A1A00446198 /* Customer.swift in Sources */,
 				F83B781E204757EC00C99E3F /* RoomViewController.swift in Sources */,
