@@ -19,14 +19,12 @@ class CustomerViewController: UIViewController {
     let realm = try! Realm()
     var customer: Results<Customer>!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         customer = realm.objects(Customer.self)
     }
     
-        
     @IBAction func save(_ sender: Any) {
         
         if !name.hasText || !id.hasText || !phone.hasText || !address.hasText {

@@ -136,12 +136,6 @@ extension RoomViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         self.dismiss(animated: true, completion: nil)
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let destinationVC = segue.destination as! DisplayViewController
-//        destinationVC.imagePassed.image = image.image
-//    }
-    
 }
 
 

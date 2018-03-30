@@ -87,7 +87,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="SOI-Qi-KLg" kind="show" id="4sl-He-yJW"/>
+                                    <action selector="addHotel:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4f7-AT-PgY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -100,6 +100,7 @@
                         <segue destination="Llx-qn-jv7" kind="show" identifier="goToCustomer" id="a26-UU-4n2"/>
                         <segue destination="Qei-Ow-FVX" kind="show" identifier="goToBooking" id="YgK-8z-HrZ"/>
                         <segue destination="rMP-e4-Hcw" kind="show" identifier="goToDisplay" id="IhO-uC-VTX"/>
+                        <segue destination="SOI-Qi-KLg" kind="show" identifier="goToHotel" id="M66-VS-0rV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -408,7 +409,7 @@
                                     <action selector="getHotel:" destination="SOI-Qi-KLg" eventType="touchUpInside" id="wXc-Eg-DbC"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2lL-KY-D0r">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="2lL-KY-D0r">
                                 <rect key="frame" x="0.0" y="224" width="414" height="512"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -509,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KWh-pK-IFI" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1941" y="885"/>
+            <point key="canvasLocation" x="-1899" y="906"/>
         </scene>
         <!--Detail-->
         <scene sceneID="mdD-n2-9p7">

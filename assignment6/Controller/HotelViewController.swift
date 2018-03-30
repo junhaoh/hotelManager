@@ -25,7 +25,6 @@ class HotelViewController: UIViewController {
 
     }
     
-    
     @IBAction func getHotel(_ sender: UIButton) {
         requestInfo(url: authURL)
     }
@@ -58,11 +57,8 @@ class HotelViewController: UIViewController {
                 } else {
                     debugPrint(response)
                 }
-                print("hahahahah")
-                let hotel = JSON(response.result.value!)["comparison"][0].stringValue
-                print(hotel)
                 
-                self.textView.text = "\(hotel)"
+                self.textView.text = response.description
             }
         }
         

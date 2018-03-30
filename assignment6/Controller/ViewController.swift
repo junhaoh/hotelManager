@@ -31,6 +31,9 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "goToDisplay", sender: self)
     }
     
-   
+    @IBAction func addHotel(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToHotel", sender: self)
+    }
+    
 }
 

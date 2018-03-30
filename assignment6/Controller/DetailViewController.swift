@@ -66,12 +66,9 @@ class DetailViewController: UIViewController {
             }
             
         } else {
-            
             textView.text = "\n\n BookingName: \(booking[row].bookingName) \n\n" +
             "Check in: \(booking[row].checkin) \n\n" + "Check out: \(booking[row].checkout) \n\n" +
             "\(booking[row].customers.last!) \n\n" + "\(booking[row].rooms.last!) \n\n"
-            
         }
-        
     }
 }
