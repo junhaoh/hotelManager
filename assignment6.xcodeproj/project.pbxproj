@@ -21,6 +21,7 @@
 		F83B78242047584200C99E3F /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B78232047584200C99E3F /* DisplayViewController.swift */; };
 		F83B782C2048E44F00C99E3F /* DisplayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83B782A2048E44F00C99E3F /* DisplayCell.swift */; };
 		F83B782D2048E44F00C99E3F /* DisplayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F83B782B2048E44F00C99E3F /* DisplayCell.xib */; };
+		F84074D2206E00BD001495E1 /* HotelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84074D1206E00BD001495E1 /* HotelViewController.swift */; };
 		F842B9F72058D33900C1E728 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F842B9F62058D33800C1E728 /* Default-568h@2x.png */; };
 		F842BA1D206301DB00C1E728 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = F842BA1C206301C900C1E728 /* default.realm */; };
 		F842BA2120630FFB00C1E728 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842BA2020630FFB00C1E728 /* DetailViewController.swift */; };
@@ -51,6 +52,7 @@
 		F83B78232047584200C99E3F /* DisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
 		F83B782A2048E44F00C99E3F /* DisplayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayCell.swift; sourceTree = "<group>"; };
 		F83B782B2048E44F00C99E3F /* DisplayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DisplayCell.xib; sourceTree = "<group>"; };
+		F84074D1206E00BD001495E1 /* HotelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelViewController.swift; sourceTree = "<group>"; };
 		F842B9F62058D33800C1E728 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F842BA1C206301C900C1E728 /* default.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = default.realm; sourceTree = "<group>"; };
 		F842BA2020630FFB00C1E728 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				F83B781F2047581F00C99E3F /* BookingViewController.swift */,
 				F83B78232047584200C99E3F /* DisplayViewController.swift */,
 				F842BA2020630FFB00C1E728 /* DetailViewController.swift */,
+				F84074D1206E00BD001495E1 /* HotelViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,18 +285,22 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-assignment6/Pods-assignment6-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +341,7 @@
 				F8047EF82067844F005DCBD2 /* BasicTableViewCell.swift in Sources */,
 				F83B78202047581F00C99E3F /* BookingViewController.swift in Sources */,
 				F84C3D2720573A1A00446198 /* Customer.swift in Sources */,
+				F84074D2206E00BD001495E1 /* HotelViewController.swift in Sources */,
 				F83B781E204757EC00C99E3F /* RoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

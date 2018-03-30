@@ -51,7 +51,6 @@ class RoomViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: UIButton) {
-        
         if !name.hasText || !price.hasText {
             let alert = UIAlertController(title: "Error", message: "Please enter all the required fields!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -88,6 +87,7 @@ class RoomViewController: UIViewController {
         uploadImage.sourceType = .photoLibrary
         self.present(uploadImage, animated: true, completion: nil)
     }
+    
     
     func create() {
         let newRoom = Room()
@@ -137,10 +137,10 @@ extension RoomViewController: UIImagePickerControllerDelegate, UINavigationContr
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! DisplayViewController
-        destinationVC.imagePassed = UIImage(named: "single.jpg")
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let destinationVC = segue.destination as! DisplayViewController
+//        destinationVC.imagePassed.image = image.image
+//    }
     
 }
 

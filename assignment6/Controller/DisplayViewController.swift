@@ -18,7 +18,7 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var displayTableView: UITableView!
     @IBOutlet weak var search: UISearchBar!
 
-    var imagePassed: UIImage!
+    var imagePassed: UIImageView!
     
     var booking: Results<Booking>!
     var customer: Results<Customer>!
@@ -77,7 +77,12 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
             "\(room[row].type) - " + "\(room[row].price) - " +
             "\(room[row].occupancy)"
             
-            basicCell.basicImage.image = imagePassed
+            if room[row].type == "Single" {
+                basicCell.basicImage.image = UIImage(named: "single.jpg")
+            } else {
+                basicCell.basicImage.image = UIImage(named: "double.jpg")
+
+            }
             
             return basicCell
             
@@ -178,7 +183,6 @@ extension DisplayViewController: UISearchBarDelegate {
                 searchBar.resignFirstResponder()
             }
         }
-
     }
 }
 
