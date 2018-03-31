@@ -13,7 +13,8 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var sectionTitle = ["Customer: Name -> ID -> Phone -> Address",
                         "Room: Name -> Type -> Price -> Occupancy",
-                        "Booking: Name -> Check in -> Check out -> Info"]
+                        "Booking: Name -> Check in -> Check out -> Info",
+                        "Hotel: Name -> Price -> Rating"]
 
     @IBOutlet weak var displayTableView: UITableView!
     @IBOutlet weak var search: UISearchBar!
@@ -23,6 +24,7 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
     var booking: Results<Booking>!
     var customer: Results<Customer>!
     var room: Results<Room>!
+    var hotel: Results<Hotel>!
     let realm = try! Realm()
 
     override func viewDidLoad() {
@@ -45,7 +47,7 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,8 +55,10 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
             return customer?.count ?? 1
         } else if section == 1 {
             return room?.count ?? 1
-        } else {
+        } else if section == 2 {
             return booking?.count ?? 1
+        } else {
+            return hotel?.count ?? 1
         }
     }
 
@@ -86,10 +90,16 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             return basicCell
             
-        } else {
+        } else if indexPath.section == 2 {
             customerCell.customTextView.text = "    \(booking[row].bookingName) - " +
             "\(booking[row].checkin) - " + "\(booking[row].checkout) \n" +
                 "   \(booking[row].customers.last!) - " + "    \(booking[row].rooms.last!)"
+            
+            return customerCell
+            
+        } else {
+            customerCell.customTextView.text = "    \(hotel[row].name) - " +
+            String(hotel[row].price) + " - " + "\(hotel[row].rating)"
             
             return customerCell
         }
@@ -122,11 +132,17 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 
                 tableView.deleteRows(at: [indexPath], with: .fade)
-            } else {
+            } else if indexPath.section == 2 {
                 try! realm.write {
                     realm.delete(booking[indexPath.row])
                 }
 
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } else {
+                try! realm.write {
+                    realm.delete(hotel[indexPath.row])
+                }
+                
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
@@ -148,8 +164,11 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
             } else if indexPath.section == 1 {
                 destinationVC.selectedRoom = room[row]
                 destinationVC.row = row
-            } else {
+            } else if indexPath.section == 2 {
                 destinationVC.selectedBooking = booking[row]
+                destinationVC.row = row
+            } else {
+                destinationVC.selectedHotel = hotel[row]
                 destinationVC.row = row
             }
         }
@@ -160,6 +179,7 @@ class DisplayViewController: UIViewController, UITableViewDelegate, UITableViewD
         customer = realm.objects(Customer.self)
         room = realm.objects(Room.self)
         booking = realm.objects(Booking.self)
+        hotel = realm.objects(Hotel.self)
         
         displayTableView.reloadData()
     }
@@ -171,6 +191,7 @@ extension DisplayViewController: UISearchBarDelegate {
         customer = customer.filter("name CONTAINS[cd] %@", search.text!)
         room = room.filter("name CONTAINS[cd] %@", search.text!)
         booking = booking.filter("bookingName CONTAINS[cd] %@", search.text!)
+        hotel = hotel.filter("name CONTAINS[cd] %@", search.text!)
 
         displayTableView.reloadData()
     }

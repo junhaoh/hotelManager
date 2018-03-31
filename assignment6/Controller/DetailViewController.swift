@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     var booking: Results<Booking>!
     var customer: Results<Customer>!
     var room: Results<Room>!
+    var hotel: Results<Hotel>!
     
     var row: Int!
     
@@ -33,6 +34,12 @@ class DetailViewController: UIViewController {
     var selectedBooking: Booking? {
         didSet {
             booking = realm.objects(Booking.self)
+        }
+    }
+    
+    var selectedHotel: Hotel? {
+        didSet {
+            hotel = realm.objects(Hotel.self)
         }
     }
     
@@ -65,10 +72,14 @@ class DetailViewController: UIViewController {
                 image.image = UIImage(named: "double.jpg")
             }
             
-        } else {
+        } else if selectedBooking != nil {
             textView.text = "\n\n BookingName: \(booking[row].bookingName) \n\n" +
             "Check in: \(booking[row].checkin) \n\n" + "Check out: \(booking[row].checkout) \n\n" +
             "\(booking[row].customers.last!) \n\n" + "\(booking[row].rooms.last!) \n\n"
+            
+        } else {
+            textView.text = "\n\n HotelName: \(hotel[row].name) \n\n"
+                + "Best Price: " + String(hotel[row].price) + "\n\n" + "Rating: \(hotel[row].rating) \n\n"
         }
     }
 }
